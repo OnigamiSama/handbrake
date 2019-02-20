@@ -17,5 +17,5 @@ do
 #
         $HANDBRAKE_CLI --all-audio --all-subtitles -i "$SRC/$FILE" -o "$DEST/$filename.$DEST_EXT" --preset="$PRESET"
         $TOUCH -r "$SRC/$FILE" "$DEST/$filename.$DEST_EXT"
-        #rm -rf $SRC/$FILE
+        #rm -rf "$SRC/$FILE"
 done
