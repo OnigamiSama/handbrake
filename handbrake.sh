@@ -1,5 +1,6 @@
 #!/bin/sh
 #
+TOUCH=touch
 SRC=/data/mediaserver/Handbrake/RAW/
 DEST=/data/mediaserver/Handbrake/Post/
 DEST_EXT=mkv
@@ -14,5 +15,7 @@ do
         extension=${filename##*.}
         filename=${filename%.*}
 #
-        $HANDBRAKE_CLI --all-audio --all-subtitles -i $SRC/$FILE -o $DEST/$filename.$DEST_EXT --preset="$PRESET"
+        $HANDBRAKE_CLI --all-audio --all-subtitles -i "$SRC/$FILE" -o "$DEST/$filename.$DEST_EXT" --preset="$PRESET"
+        $TOUCH -r "$SRC/$FILE" "$DEST/$filename.$DEST_EXT"
+        #rm -rf "$SRC/$FILE"
 done
